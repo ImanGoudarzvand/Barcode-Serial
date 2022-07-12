@@ -37,7 +37,7 @@ def give_barcodes(big_file, palet_num, folderName, file_name):
 
                 # if total_num == 0:
                 barcodes.append(file.read(i+1))
-                if barcodes[-1] == " ":
+                if barcodes[-1] == "":
                     delete_last_file = True
                     break
                 total_num += 1
