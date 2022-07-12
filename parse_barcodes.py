@@ -35,6 +35,9 @@ def give_barcodes(big_file, palet_num, folderName, file_name):
 
                 # if total_num == 0:
                 barcodes.append(file.read(i+1))
+                if barcodes[-1] == " ":
+                    flag = False
+                    break
                 total_num += 1
                 # else:
                 #     total_num -= 1
@@ -56,6 +59,7 @@ def give_barcodes(big_file, palet_num, folderName, file_name):
                     f.write("%s\n" % item)
 
             file_num += 1
+        os.remove(f'{folderName}/{file_name}{file_num-1}.txt')
         # barcodes = []
         # print(barcodes)
     # return barcodes
