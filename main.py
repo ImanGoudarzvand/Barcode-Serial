@@ -159,7 +159,7 @@ def main(big_file_folder, output_folder_name, output_file_name, packing_list_fil
                 #     f'{output_folder_name}/{output_file_name}_{fileNumber+1}.txt', t, delimiter=',', fmt='%s')
                 
                 np.savetxt(
-                    f'{output_folder_name}/{output_file_name}_{fileNumber+1}.csv', t, delimiter=',', fmt='%s')
+                    f'{output_folder_name}/{output_file_name}_{fileNumber+1}.txt', t, delimiter=',', fmt='%s')
 
                 # with open(f'{output_folder_name}/{output_file_name}_{fileNumber+1}.txt', 'a') as f:
                 #     for item in t2:
