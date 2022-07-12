@@ -1,12 +1,13 @@
-/
-/
 /outpu
 /packin
 /big_folde
 /__pycache__
- 
+/build
+/dist
 
 *.csv
 *.txt
 *.TXT
-
+*.spec
+parse_barcodes
+main
