@@ -164,13 +164,13 @@ def main(big_file_folder, output_folder_name, output_file_name, packing_list_fil
                 #     for item in t2:
                 #         f.write('%s,' % item)
                 
-                with open(f'{output_folder_name}/{output_file_name}_{fileNumber+1}.csv', 'a') as f:
+                with open(f'{output_folder_name}/{output_file_name}_{fileNumber+1}.txt', 'a') as f:
                     for item in t2:
                         f.write('%s,' % item)
 
             else:
                 np.savetxt(
-                    f'{output_folder_name}/{output_file_name}_{fileNumber+1}.csv', output.reshape(-1, tarh*2), delimiter=',', fmt='%s')
+                    f'{output_folder_name}/{output_file_name}_{fileNumber+1}.txt', output.reshape(-1, tarh*2), delimiter=',', fmt='%s')
 
             packing_list_output = output.reshape(-1, 2)
             packing_list_df = pd.DataFrame(
@@ -183,23 +183,23 @@ def main(big_file_folder, output_folder_name, output_file_name, packing_list_fil
 
 if __name__ == '__main__':
     # give_barcode(big_file, 6120000)
-    # big_file = 'Pocket_14001114_Letter_3966575_Part1_236Milion.txt'
+    big_file = 'Pocket_14001114_Letter_3966575_Part1_236Milion.txt'
 
-    # big_file_folder = input('big_file_folder: ')
-    # num_in_palet = int(input('num_in_palet: '))
-    # tarh = int(input('tarh: '))
-    # output_folder_name = input('output_folder_name: ')
-    # output_file_name = input('output_file_name: ')
-    # packing_list_folder_name = input('packing_list_folder_name: ')
-    # packing_list_file_name = input('packing_list_file_name: ')
+    big_file_folder = input('big_file_folder: ')
+    num_in_palet = int(input('num_in_palet: '))
+    tarh = int(input('tarh: '))
+    output_folder_name = input('output_folder_name: ')
+    output_file_name = input('output_file_name: ')
+    packing_list_folder_name = input('packing_list_folder_name: ')
+    packing_list_file_name = input('packing_list_file_name: ')
 
-    big_file_folder = "big_folder"
-    num_in_palet = 2750000
-    tarh = 32
-    output_folder_name = "o"
-    output_file_name = "oo"
-    packing_list_folder_name = "p"
-    packing_list_file_name = "pp"
+#     big_file_folder = "big_folder"
+#     num_in_palet = 2750000
+#     tarh = 32
+#     output_folder_name = "o"
+#     output_file_name = "oo"
+#     packing_list_folder_name = "p"
+#     packing_list_file_name = "pp"
 
     main(big_file_folder=big_file_folder, output_folder_name=output_folder_name, output_file_name=output_file_name,
          packing_list_file_name=packing_list_file_name, packing_list_folder_name=packing_list_folder_name, tarh=tarh, num_in_palet=num_in_palet)
