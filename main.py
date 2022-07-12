@@ -21,6 +21,7 @@ def main(big_file_folder, output_folder_name, output_file_name, packing_list_fil
     big_file_names = os.listdir(big_file_folder)
     big_file_names.sort(key=natural_keys)
 
+    
     ### For barcodes:
     ### Last pallet has 2 extra \n
     ### Others barcodes file have 1 extra \n
