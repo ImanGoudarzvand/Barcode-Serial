@@ -1,37 +1,60 @@
 import numpy as np
 
 
-def give_Serials_for_palet(num_in_palet, total_barcodes, tarh, starter=1, fileNumber=1, last_file=False, add_zeros=False):
+def give_Serials_for_palet(num_in_palet, total_barcodes, tarh, starter=1, fileNumber=1, last_file=False, add_zeros=False, start_index= 1):
 
     accumulator = 500
     num_box_500 = num_in_palet // (tarh*accumulator)
 
     if last_file:
-        ch_ind = np.arange(starter, total_barcodes+1, tarh*accumulator)
+        ch_ind = np.arange(starter, total_barcodes+ start_index, tarh*accumulator)
 
     else:
-
-        # 2 added for adade mazrabe 32 or 34 to work
+        # 2 added for adade mazrabe 32 or 34 to work ????????
         ch_ind = np.arange(
-            starter, (num_in_palet * fileNumber)+2, tarh*accumulator)
+            starter, (num_in_palet * fileNumber) + start_index, tarh*accumulator)
     total = []
-    for num in ch_ind[:-1]:
-        a = []
-        for i in np.arange(num, num+accumulator, 1):
-            row = np.arange(i, accumulator*tarh+num, accumulator)
+    num_left = num_in_palet - num_box_500 * (tarh*accumulator)
+    if num_left:
+        for num in ch_ind[:-1]:
+            a = []
+            for i in np.arange(num, num+accumulator, 1):
+                row = np.arange(i, accumulator*tarh+num, accumulator)
 
-            for x in row:
-                a.append(x)
+                for x in row:
+                    a.append(x)
 
-        total.append(a)
-    total = np.array(total).flatten()
+            total.append(a)
+        total = np.array(total).flatten()
+    else:
+        for num in ch_ind:
+            a = []
+            for i in np.arange(num, num+accumulator, 1):
+                row = np.arange(i, accumulator*tarh+num, accumulator)
+
+                for x in row:
+                    a.append(x)
+
+            total.append(a)
+        total = np.array(total).flatten()
+
+    # for num in ch_ind:
+    #     a = []
+    #     for i in np.arange(num, num+accumulator, 1):
+    #         row = np.arange(i, accumulator*tarh+num, accumulator)
+
+    #         for x in row:
+    #             a.append(x)
+
+    #     total.append(a)
+    # total = np.array(total).flatten()
 #     print(total.shape)
 
     ############################
     # End of complet 500 boxes
     ############################
 
-    num_left = num_in_palet - num_box_500 * (tarh*accumulator)
+    
 
     # and the last not-complete box
 
