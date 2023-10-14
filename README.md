@@ -1,4 +1,4 @@
-# Sadegh_work Barcode-Serial Project 1
+# Barcode-Serial Project 1
 
 First split the Big-data-Barcode-text-file into several smaller txt files:
 ```
