@@ -1,17 +1,19 @@
-import os
-import numpy as np
 
+def give_last_palet_barcode(big_files_PATH) -> list:
+    """This function will read barcodes from the last sub-txt barcode files
 
-def give_last_palet_barcode(big_files_PATH):
+    Args:
+        big_files_PATH (_type_): the path to last sub-txt barcode files
+ 
+    Returns:
+        a list contains last file barcodes
+    """
     last_palet_barcodes = []
 
     with open(big_files_PATH) as f:
         i = 0
-        # flag = True
         while True:
             data = f.read(1)
-            # print(data)
-            # print('here', data)
             if data == '\n':
                 break
             else:

@@ -1,3 +1,11 @@
 # Sadegh_work Barcode-Serial Project 1
 
-First split the Big-data-Barcode-text-file in a way that client specify number of barcodes in each file.
+First split the Big-data-Barcode-text-file into several smaller txt files:
+```
+python parse_barcodes.py
+```
+
+Then make output files and packing files with:
+```
+python main.py
+```

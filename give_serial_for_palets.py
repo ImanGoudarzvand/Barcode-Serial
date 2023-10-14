@@ -1,10 +1,17 @@
 import numpy as np
 
 
-def give_Serials_for_palet(num_in_palet, total_barcodes, tarh, starter=1, fileNumber=1, last_file=False, add_zeros=False, start_index= 1):
+def give_Serials_for_palet(num_in_palet,
+                        total_barcodes,
+                        tarh,
+                        accumulator,
+                        starter=1,
+                        fileNumber=1,
+                        last_file=False,
+                        add_zeros=False,
+                        start_index= 1):
 
-    accumulator = 500
-    num_box_500 = num_in_palet // (tarh*accumulator)
+    num_boxes = num_in_palet // (tarh*accumulator)
 
     if last_file:
         ch_ind = np.arange(starter, total_barcodes+ start_index, tarh*accumulator)
@@ -14,7 +21,7 @@ def give_Serials_for_palet(num_in_palet, total_barcodes, tarh, starter=1, fileNu
         ch_ind = np.arange(
             starter, (num_in_palet * fileNumber) + start_index, tarh*accumulator)
     total = []
-    num_left = num_in_palet - num_box_500 * (tarh*accumulator)
+    num_left = num_in_palet - num_boxes * (tarh*accumulator)
     if num_left:
         for num in ch_ind[:-1]:
             a = []

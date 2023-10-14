@@ -1,13 +1,7 @@
-/outpu
-/packin
-/big_folde
-/__pycache__
-/build
-/dist
-
-*.csv
+*/
 *.txt
+*.ipynb
+*.csv
 *.TXT
 *.spec
-parse_barcodes
-main
+*.exe
