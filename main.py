@@ -95,12 +95,12 @@ def main(big_file_folder:str ,
 
             packing_list_output = output.reshape(num_in_palet, 2)
 
-            serials = packing_list_output[:, 1]
+            # serials = packing_list_output[:, 1]
             if min_lenght == max_lenght:
 
-                packing_list_output[:, 1] = sorted(serials)
+                packing_list_output = sorted(packing_list_output,  key=lambda x: x[1])
             else:
-                packing_list_output[:, 1] = sorted(serials, key= natural_keys)
+                packing_list_output = sorted(packing_list_output, key= lambda x: natural_keys(x[1]))
 
             np.savetxt(f'{packing_list_folder_name}/{packing_list_file_name}_{fileNumber+1}.txt',
                        packing_list_output, delimiter=',', fmt='%s')
@@ -143,12 +143,12 @@ def main(big_file_folder:str ,
                 f'{output_folder_name}/{output_file_name}_{fileNumber+1}.txt', output, delimiter=',', fmt='%s')
 
             packing_list_output = output.reshape(num_in_palet, 2)
-            serials = packing_list_output[:, 1]
+            # serials = packing_list_output[:, 1]
 
             if min_lenght == max_lenght:
-                packing_list_output[:, 1] = sorted(serials)
+                packing_list_output = sorted(packing_list_output, key=lambda x: x[1])
             else:
-                packing_list_output[:, 1] = sorted(serials, key= natural_keys)
+                packing_list_output = sorted(packing_list_output, key= lambda x: natural_keys(x[1]))
 
             np.savetxt(f'{packing_list_folder_name}/{packing_list_file_name}_{fileNumber+1}.txt',
                        packing_list_output, delimiter=',', fmt='%s')
@@ -217,12 +217,12 @@ def main(big_file_folder:str ,
 
             packing_list_output = output.reshape(-1, 2)
 
-            serials = packing_list_output[:, 1]
+            # serials = packing_list_output[:, 1]
 
             if min_lenght == max_lenght:
-                packing_list_output[:, 1] = sorted(serials)
+                packing_list_output = sorted(packing_list_output, key=lambda x: x[1])
             else:
-                packing_list_output[:, 1] = sorted(serials, key= natural_keys)
+                packing_list_output = sorted(packing_list_output, key= lambda x: natural_keys(x[1]))
 
             np.savetxt(f'{packing_list_folder_name}/{packing_list_file_name}_{fileNumber+1}.txt',
                        packing_list_output, delimiter=',', fmt='%s')
@@ -240,6 +240,15 @@ if __name__ == '__main__':
     # give_barcode(big_file, 6120000)
     # big_file = 'Pocket_14001114_Letter_3966575_Part1_236Milion.txt'
 
+    # big_file_folder = "big_folder_12mil"
+    # num_in_palet = 400_000
+    # tarh = 32
+    # start_index = 1
+    # output_folder_name = "output_folder"
+    # output_file_name = "out"
+    # packing_list_folder_name = "packing_folder"
+    # packing_list_file_name = "packing"
+    # accumulator = 500
 
     big_file_folder = input('big_file_folder: ')
     assert os.path.exists(big_file_folder), f"{big_file_folder} does NOT exists !"
@@ -268,15 +277,6 @@ if __name__ == '__main__':
 
     accumulator = int(input('accumulator: '))
 
-    # big_file_folder = "barcodes_folder"
-    # num_in_palet = 100_000
-    # tarh = 32
-    # start_index = 1
-    # output_folder_name = "o"
-    # output_file_name = "oo"
-    # packing_list_folder_name = "p"
-    # packing_list_file_name = "pp"
-    # accumulator = 500
 
 
     main(big_file_folder=big_file_folder,
